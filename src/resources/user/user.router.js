@@ -1,9 +1,17 @@
 import { Router } from 'express'
-import { me, updateMe } from './user.controllers'
+import { createUser, deleteUser, getUser, updateUser } from './user.controllers'
 
 const router = Router()
 
-router.get('/', me)
-router.put('/', updateMe)
+router
+	.route('/')
+	.get(createUser)
+
+// /api/user
+router
+	.route('/:id')
+	.get(getUser)
+	.put(updateUser)
+	.delete(deleteUser)
 
 export default router
